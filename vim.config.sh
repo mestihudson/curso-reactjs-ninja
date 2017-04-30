@@ -4,8 +4,8 @@
 
 # instalar wakatime
 
-# guardar configuracoes pos-Vundle install
-mv .vimrc.local .vimrc.local.bkp
+# clonar repositorio de configuracoes
+git clone https://github.com/mestihudson/vim.config.git /tmp/vim.config
 
 # remover .vim .vimrc
 rm -frv ~/.vim ~/.vimrc
@@ -14,19 +14,11 @@ rm -frv ~/.vim ~/.vimrc
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/plugins/Vundle.vim
 
 # criar demais diretorios do .vim
-mkdir -p ~/.vim/{backups,swaps,colors,undos}
-
-# baixar onedark colorscheme
-curl -fsSL https://raw.githubusercontent.com/joshdick/onedark.vim/master/colors/onedark.vim  > ~/.vim/colors/onedark.vim
-
-# criar um arquivo de snippets vazio
-# echo {} >> ~/.vim/snippets/emmet.json
-
-# baixar o arquivo de configuracoes (.vimrc) do da2k
-curl -fsSL https://raw.githubusercontent.com/mestihudson/curso-reactjs-ninja/master/config/.vimrc > ~/.vimrc
+mv /tmp/vim.config/.vim ~/.vim
+mv /tmp/vim.config/.vimrc ~/.vimrc
 
 # instalar o que foi configurado
 vim +PluginInstall +qall
 
 # restaurar configuracoes pos-Vundle-install
-mv .vimrc.local.bkp .vimrc.local
+mv -fv /tmp/vim.config/.vimrc.local ~/.vimrc.local
